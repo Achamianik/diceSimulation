@@ -4,25 +4,19 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
 @AllArgsConstructor
 @EqualsAndHashCode
 @Getter
+@ToString
 public class GroupSizeKey {
 
-    private final int groupSize;
+    private final int diceNumber;
     private final int diceSize;
-
-    @Override
-    public String toString() {
-        return "GroupSizeKey{" +
-                "groupSize=" + groupSize +
-                ", diceSize=" + diceSize +
-                '}';
-    }
 
     @JsonValue
     public String toJsoKey() {
-        return groupSize + "_" + diceSize;
+        return diceNumber + "_" + diceSize;
     }
 }

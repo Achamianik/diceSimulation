@@ -38,12 +38,12 @@ class DiceControllerTest {
 
     @ParameterizedTest
     @CsvSource({
-            "1, 1, 1, rollDices.side: must be greater than or equal to 4",
+            "1, 1, 1, rollDices.diceSide: must be greater than or equal to 4",
             "4, 0, 5, rollDices.diceNumber: must be greater than or equal to 1",
             "4, 1, 0, rollDices.rolls: must be greater than or equal to 1",
     })
     public void exceptionTest(int side, int dice, int rollNumber, String errorMessage) throws Exception {
-        MvcResult mvcResult = mockMvc.perform(get("/dice/roll/{side}/{diceNumber}/{rolls}", side, dice, rollNumber))
+        MvcResult mvcResult = mockMvc.perform(get("/dice/roll/{diceSide}/{diceNumber}/{rolls}", side, dice, rollNumber))
                 .andExpect(status().isInternalServerError())
                 .andReturn();
 
@@ -69,7 +69,7 @@ class DiceControllerTest {
         when(diceRollerFacade.roleDices(diceGroup, 2))
                 .thenReturn(role);
 
-        MvcResult mvcResult = mockMvc.perform(get("/dice/roll/{side}/{diceNumber}/{rolls}", 6, 1, 2))
+        MvcResult mvcResult = mockMvc.perform(get("/dice/roll/{diceSide}/{diceNumber}/{rolls}", 6, 1, 2))
                 .andExpect(status().isOk())
                 .andReturn();
 

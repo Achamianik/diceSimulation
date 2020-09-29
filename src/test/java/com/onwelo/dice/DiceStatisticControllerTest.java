@@ -1,7 +1,7 @@
 package com.onwelo.dice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.onwelo.dice.api.RollDiceStatistic;
+import com.onwelo.dice.api.RollBasicStatistic;
 import com.onwelo.dice.api.RollsDistributionStatistic;
 import com.onwelo.dice.api.RollsStatistic;
 import com.onwelo.dice.domain.DiceGroup;
@@ -51,10 +51,10 @@ class DiceStatisticControllerTest {
 
     @Test
     public void get_statistic_ok() throws Exception {
-        LinkedHashMap<GroupSizeKey, RollDiceStatistic> roles = new LinkedHashMap<>();
-        roles.put(new GroupSizeKey(3, 6), new RollDiceStatistic(5, 20));
-        roles.put(new GroupSizeKey(1, 6), new RollDiceStatistic(1, 50));
-        roles.put(new GroupSizeKey(2, 4), new RollDiceStatistic(2, 30));
+        LinkedHashMap<GroupSizeKey, RollBasicStatistic> roles = new LinkedHashMap<>();
+        roles.put(new GroupSizeKey(3, 6), new RollBasicStatistic(5, 20));
+        roles.put(new GroupSizeKey(1, 6), new RollBasicStatistic(1, 50));
+        roles.put(new GroupSizeKey(2, 4), new RollBasicStatistic(2, 30));
 
         when(rollStatisticFacade.getStatistic())
                 .thenReturn(new RollsStatistic(roles));

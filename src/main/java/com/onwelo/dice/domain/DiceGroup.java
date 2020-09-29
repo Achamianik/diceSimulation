@@ -42,4 +42,5 @@ public class DiceGroup {
                 .orElseThrow(() -> new IllegalArgumentException("Dice group not exist"))
                 .getSide();
     }
+
 }
