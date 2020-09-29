@@ -3,6 +3,7 @@ package com.onwelo.dice;
 import com.onwelo.dice.api.RollsDistributionStatistic;
 import com.onwelo.dice.api.RollsStatistic;
 import com.onwelo.dice.statistic.RollStatisticFacade;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ public class DiceStatisticController {
     }
 
     @GetMapping("/get")
+    @ApiOperation(value = "Calculate roll statistic")
     public ResponseEntity<RollsStatistic> statistic() {
         RollsStatistic rollsStatistic = rollStatisticFacade.getStatistic();
 
@@ -31,6 +33,7 @@ public class DiceStatisticController {
     }
 
     @GetMapping("/rollDistribution/{diceNumber}/{diceSize}")
+    @ApiOperation(value = "Calculate number distribution for dice group")
     public ResponseEntity<RollsDistributionStatistic> rollDistribution(@PathVariable @Min(1) int diceNumber,
                                                                        @PathVariable @Min(4) int diceSize) {
         RollsDistributionStatistic rollsStatistic = rollStatisticFacade.getRollDistribution(diceNumber, diceSize);

@@ -1,6 +1,6 @@
 package com.onwelo.dice.statistic;
 
-import com.onwelo.dice.api.RollDiceStatistic;
+import com.onwelo.dice.api.RollBasicStatistic;
 import com.onwelo.dice.api.RollsDistributionStatistic;
 import com.onwelo.dice.api.RollsStatistic;
 import com.onwelo.dice.dice.RolesSessionRepository;
@@ -33,11 +33,11 @@ public class SimpleStatisticFacade implements RollStatisticFacade {
     @Override
     public RollsStatistic getStatistic() {
         List<RolesSession> allRoll = rolesSessionRepository.findAll();
-        Map<GroupSizeKey, RollDiceStatistic> rollStatistic = allRoll.stream()
+        Map<GroupSizeKey, RollBasicStatistic> rollStatistic = allRoll.stream()
                 .collect(Collectors.toMap(
                         rolesSession -> new GroupSizeKey(rolesSession.getGroupSize(), rolesSession.getDiceSize()),
-                        rolesSession -> new RollDiceStatistic(rolesSession.getRolls()),
-                        RollDiceStatistic::incrementBy
+                        rolesSession -> new RollBasicStatistic(rolesSession.getRolls()),
+                        RollBasicStatistic::incrementBy
                 ));
         return new RollsStatistic(rollStatistic);
     }

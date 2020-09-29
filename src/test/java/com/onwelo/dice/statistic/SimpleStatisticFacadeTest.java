@@ -1,6 +1,6 @@
 package com.onwelo.dice.statistic;
 
-import com.onwelo.dice.api.RollDiceStatistic;
+import com.onwelo.dice.api.RollBasicStatistic;
 import com.onwelo.dice.api.RollsDistributionStatistic;
 import com.onwelo.dice.api.RollsStatistic;
 import com.onwelo.dice.dice.RolesSessionRepository;
@@ -47,10 +47,10 @@ class SimpleStatisticFacadeTest {
         assertThat(statistic).isNotNull();
         assertThat(statistic.getStatistic()).
                 containsOnly(
-                        entry(new GroupSizeKey(3, 6), new RollDiceStatistic(2, 5)),
-                        entry(new GroupSizeKey(1, 4), new RollDiceStatistic(1, 1)),
-                        entry(new GroupSizeKey(2, 5), new RollDiceStatistic(1, 4)),
-                        entry(new GroupSizeKey(1, 6), new RollDiceStatistic(1, 1))
+                        entry(new GroupSizeKey(3, 6), new RollBasicStatistic(2, 5)),
+                        entry(new GroupSizeKey(1, 4), new RollBasicStatistic(1, 1)),
+                        entry(new GroupSizeKey(2, 5), new RollBasicStatistic(1, 4)),
+                        entry(new GroupSizeKey(1, 6), new RollBasicStatistic(1, 1))
                 );
     }
 

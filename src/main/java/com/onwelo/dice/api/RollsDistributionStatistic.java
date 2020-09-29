@@ -1,6 +1,7 @@
 package com.onwelo.dice.api;
 
 import com.onwelo.dice.domain.RolesSession;
+import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -14,6 +15,7 @@ import java.util.Map;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
+@ApiModel(description ="Number distribution for dice group")
 public class RollsDistributionStatistic {
 
     private final Map<Integer, BigDecimal> statistic;

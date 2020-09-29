@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode
 @ToString
-public class Dice implements Roll{
+class Dice implements Roll{
 
     private final int side;
 }
